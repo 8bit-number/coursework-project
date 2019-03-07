@@ -24,18 +24,25 @@ soup = BeautifulSoup(r.content, 'lxml')
 
 # table = (soup.find_all('table', {"class": "routetable facet-results"}))
 # table = (soup.string)
-table = (soup.find_all('a', {"href": re.compile("/climbing/ukraine/crimea/route/\d+") }))
+table = (soup.find_all('a', {"href": (re.compile('/climbing/ukraine/crimea/route/1199420742(?=" )'))}))
 table2 = soup.find_all('span', {"class":"pull-right gb2"})
 result = []
+print(table)
+# for loop to extract the relative path of each route:
+for ais in table:
+    # s = BeautifulSoup(ais, "lxml")
+    # print(soup.find("a", "title"))
+    # if
+    print(ais)
+    # result = re.findall('title=.+<', (str(ais, "utf-8")))
+    # print(result)
+# print(table[2])
 
 for i in table:
-    # if i is not '':
     k = i.get_text()
     if k:
-#     print(i.text.replace("\n\n\n", ''))
         result.append(k)
-    # result = re.sub(r'\s+', ' ', text).strip()
-print(result)
+# print(result)
 # result contains all names of routes
 
 
@@ -63,22 +70,4 @@ print(result)
 #         # print(al)
 #         for link in al:
 #             fin[(soup.find_all('a', {"href": link[:-1]})[0]).contents[0].strip()] =  "https://www.thecrag.com" + link[:-1]
-#
-#     return fin
-#
-# def create_file(file_names):
-#
-#     # file_names = parse(get_html("https://www.thecrag.com/climbing/ukraine"))
-#     # for name in file_names:
-#         # print(name)
-#         # with open(name.replace("/", '_')+'.html', "w") as f:
-#         #     resp = urllib.request.urlopen(file_names[name])
-#         #     souup = BeautifulSoup(resp.read(), features='html.parser')
-#             # f.write(souup.prettify())
-#     new_names = parse("https://www.thecrag.com/climbing/ukraine/crimea")
-#     print(new_names)
 
-# def main():
-#     parse(get_html("https://www.thecrag.com/climbing/ukraine/routes?page=1"))
-# # https://www.thecrag.com/climbing/ukraine/routes?page=1
-# main()
