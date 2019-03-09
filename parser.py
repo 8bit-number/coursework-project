@@ -10,64 +10,60 @@ import re
 # code below works well
 r = requests.get("https://www.thecrag.com/climbing/ukraine/routes?page=1")
 soup = BeautifulSoup(r.content, 'lxml')
-# # (soup.find_all('a', class_='manga_img'))
+table = soup.find_all('a')
 
-# def parse(html):
-#     soup = BeautifulSoup(html.content, features='lxml')
-#
-#     table = soup.find('table', class_="routetable facet-results")
-# with open('prettified.html', 'w') as f:
-#     f.write
-
-
-
-
-# table = (soup.find_all('table', {"class": "routetable facet-results"}))
-# table = (soup.string)
-table = (soup.find_all('a', {"href": (re.compile('/climbing/ukraine/crimea/route/1199420742(?=" )'))}))
-table2 = soup.find_all('span', {"class":"pull-right gb2"})
-result = []
-print(table)
-# for loop to extract the relative path of each route:
-for ais in table:
-    # s = BeautifulSoup(ais, "lxml")
-    # print(soup.find("a", "title"))
-    # if
-    print(ais)
-    # result = re.findall('title=.+<', (str(ais, "utf-8")))
-    # print(result)
-# print(table[2])
-
+addresses = []
 for i in table:
-    k = i.get_text()
-    if k:
-        result.append(k)
-# print(result)
-# result contains all names of routes
+    addresses.extend(re.findall("\/climbing.+\/route\/\d{2,}(?=\")", str(i)))
 
 
-# for i in table2:
-    # print(i.text)
+# k = i.get_text()
+    # if k:
+    #     result.append(k)
 
-    # f.write(table.())
+# print(soup.find_all("a"))
+d = {}
+pathes = []
+for row, adres in zip(table, addresses):
+    # print(i)
+
+    z = (soup.find_all("a", {"href": adres}))
+    # print(z)
+    # each = soup.find("a", {"href": adres}).text
+    # print(type(each))
+    for i in z:
+        way = i.attrs['title']
+        path = way.split(" › ")
+        path = [i.replace(u'\xa0', ' ') for i in path]
+        # print(path)
+        path.append(i.text)
+        # print(i.text)
+        pathes.append(path)
+
+
+# print(pathes)
+
+rez = []
+difficulties = soup.find_all('span', {"class": re.compile("pull-right gb\d+")})
+
+
+
+# print(rez)
+for diff, pat in zip(difficulties, pathes):
+
+    d[tuple(pat)] = diff.text
+
+print(d)
+
+result = []
+
+
+
+# for loop to extract the relative path of each route:
+
+
 # for i in table:
-    # lst.append(i.text)
-
-    # l = (i.text.replace('\n\n', '\n'))
-    # print(l.replace('\n\n', '\n'))
-    # if i.text:
-    # print(i.prettify())
-        # if i:
-        #     f.write(i.text.strip())
-
-    # with open("prettified.html") as data:
-    #     readd = data.read()
-    #     soup = BeautifulSoup(readd, features='lxml')
-    #     print(soup.find_all("a"))
-#         lst = []
-#         fin = {}
-#         al = re.findall("/climbing/ukraine/area/\w+\"|/climbing/ukraine/\w+\"", readd)
-#         # print(al)
-#         for link in al:
-#             fin[(soup.find_all('a', {"href": link[:-1]})[0]).contents[0].strip()] =  "https://www.thecrag.com" + link[:-1]
-
+#     k = i.get_text()
+#     if k:
+#         result.append(k)
+# print(result)
