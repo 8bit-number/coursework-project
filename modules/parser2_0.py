@@ -33,12 +33,14 @@ def url_processor():
         while 1:
             query = {"page": page_increment(i)}
             response = requests.get(address, params=query)
+            # print(response.)
             time.sleep(3)
             try:
-                main_parser(response)
+                main_parser(response.content)
                 i += 1
-            except modules.exceptions.ParserException as e:
-                print(e, response.url)
+            except modules.exceptions.ParserException:
+                with open("log.txt", "a") as f:
+                    f.write(response.url)
                 break
 
 
@@ -55,6 +57,8 @@ def get_ascent_title(bs_obj):
             splitted[el] = splitted[el].replace("\xa0", '')
             splitted[el] = splitted[el].strip()
         return splitted
+    else:
+        return None
 
 
 def get_ascent_type(bs_obj):
@@ -67,7 +71,7 @@ def get_ascent_type(bs_obj):
     rez = bs_obj.find("span", {"class": re.compile("tags .+")})
     if rez:
         return rez.text
-    return ''
+    return "Unknown"
 
 
 def get_ascent_difficulty(bs_obj):
@@ -90,17 +94,18 @@ def main_parser(html):
     :param html: html contents of the web-site
     :return: None
     """
-    soup = BeautifulSoup(html.content, 'lxml')
+    soup = BeautifulSoup(html, 'lxml')
     table = soup.find_all('tr')
+    if len(table) == 1:
+        raise modules.exceptions.ParserException(
+            "The url contains an empty page.")
+
     for row in table:
         if get_ascent_title(row):
             write_to_file(get_ascent_title(row), get_ascent_type(row),
                           get_ascent_difficulty(row)[0],
                           get_ascent_difficulty(row)[1])
-            print("the data was written to the file successfully!")
-    else:
-        raise modules.exceptions.ParserException(
-            "The url contains an empty page.")
+            # print("the data was written to the file successfully!")
 
 
 def write_to_file(title, style, difficulty, category):
@@ -111,7 +116,7 @@ def write_to_file(title, style, difficulty, category):
     :param difficulty: str
     :return:
     """
-    with open("testing_changes.csv", "a") as csv_file:
+    with open("final_file_with_all_data.csv", "a") as csv_file:
         writer = csv.writer(csv_file, delimiter=',')
         writer.writerow(title + [style] + [difficulty] + [category])
 
