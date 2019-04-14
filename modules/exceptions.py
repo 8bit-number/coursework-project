@@ -5,5 +5,5 @@ class ParserException(Exception):
 
 
 class EmptyUrl(ParserException):
-    """ Exception, raised if cursor is attempted to be placed before file begins """
+    """ Exception, raised if url is empty """
     pass
