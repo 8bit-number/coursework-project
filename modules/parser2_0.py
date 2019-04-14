@@ -1,18 +1,14 @@
 from bs4 import BeautifulSoup
+import modules.exceptions
 import requests
 import re
 import time
 import csv
 
 
-def is_empty(url):
-    """
-    checks whether the web page that is behind a specific address is empty
-    :param url: str - url address
-    :return: bool
-    """
-    resp = requests.get(url)
-    return len(resp.content) < 100000
+def page_increment(num):
+    num += 1
+    return num
 
 
 def url_processor():
@@ -20,31 +16,30 @@ def url_processor():
     makes requests to the certain url-address
     :return:
     """
-    places_list = ["https://www.thecrag.com/climbing/australia/routes?page=1",
-                   "https://www.thecrag.com/climbing/new-zealand/routes?page=1",
-                   "https://www.thecrag.com/climbing/pacific-islands/routes?page=1",
-                   "https://www.thecrag.com/climbing/north-america/routes?page=1",
-                   "https://www.thecrag.com/climbing/central-america/routes?page=1",
-                   "https://www.thecrag.com/climbing/south-america/routes?page=1",
-                   "https://www.thecrag.com/climbing/europe/routes?page=1",
-                   "https://www.thecrag.com/climbing/africa/routes?page=1",
-                   "https://www.thecrag.com/climbing/middle-east/routes?page=1",
-                   "https://www.thecrag.com/climbing/asia/routes?page=1"
+    places_list = ["https://www.thecrag.com/climbing/australia/routes",
+                   "https://www.thecrag.com/climbing/new-zealand/routes",
+                   "https://www.thecrag.com/climbing/pacific-islands/routes",
+                   "https://www.thecrag.com/climbing/north-america/routes",
+                   "https://www.thecrag.com/climbing/central-america/routes",
+                   "https://www.thecrag.com/climbing/south-america/routes",
+                   "https://www.thecrag.com/climbing/europe/routes",
+                   "https://www.thecrag.com/climbing/africa/routes",
+                   "https://www.thecrag.com/climbing/middle-east/routes",
+                   "https://www.thecrag.com/climbing/asia/routes"
                    ]
 
     for address in places_list:
-        i = 1
+        i = 0
         while 1:
-            if is_empty(address):
-                break
-
-            else:
-                address = re.search(".+=", address).group(0) + '{}'.format(
-                    str(i))
-                response = requests.get(address)
-                time.sleep(3)
+            query = {"page": page_increment(i)}
+            response = requests.get(address, params=query)
+            time.sleep(3)
+            try:
                 main_parser(response)
                 i += 1
+            except modules.exceptions.ParserException as e:
+                print(e, response.url)
+                break
 
 
 def get_ascent_title(bs_obj):
@@ -55,7 +50,11 @@ def get_ascent_title(bs_obj):
     """
     rez = bs_obj.find("a", {"title": re.compile(".+")})
     if rez:
-        return rez["title"]
+        splitted = rez["title"].split("›")[1:]
+        for el in range(len(splitted)):
+            splitted[el] = splitted[el].replace("\xa0", '')
+            splitted[el] = splitted[el].strip()
+        return splitted
 
 
 def get_ascent_type(bs_obj):
@@ -68,6 +67,7 @@ def get_ascent_type(bs_obj):
     rez = bs_obj.find("span", {"class": re.compile("tags .+")})
     if rez:
         return rez.text
+    return ''
 
 
 def get_ascent_difficulty(bs_obj):
@@ -78,8 +78,10 @@ def get_ascent_difficulty(bs_obj):
     :return: str
     """
     rez = bs_obj.find('span', {"class": re.compile("pull-right gb\d+")})
+    category = bs_obj.find("span")["class"][1]
     if rez:
-        return rez.text
+        return rez.text, category
+    return "Unknown", "Unknown"
 
 
 def main_parser(html):
@@ -93,12 +95,15 @@ def main_parser(html):
     for row in table:
         if get_ascent_title(row):
             write_to_file(get_ascent_title(row), get_ascent_type(row),
-                          get_ascent_difficulty(row))
+                          get_ascent_difficulty(row)[0],
+                          get_ascent_difficulty(row)[1])
+            print("the data was written to the file successfully!")
+    else:
+        raise modules.exceptions.ParserException(
+            "The url contains an empty page.")
 
-    print("the data was written to the file successfully!")
 
-
-def write_to_file(title, style, difficulty):
+def write_to_file(title, style, difficulty, category):
     """
     write all the data to the .csv file
     :param title: str
@@ -106,10 +111,9 @@ def write_to_file(title, style, difficulty):
     :param difficulty: str
     :return:
     """
-    with open("test_first_page.csv", "a") as csv_file:
+    with open("testing_changes.csv", "a") as csv_file:
         writer = csv.writer(csv_file, delimiter=',')
-        writer.writerow([title] + [style] + [difficulty])
+        writer.writerow(title + [style] + [difficulty] + [category])
 
 
-main_parser(
-    requests.get("https://www.thecrag.com/climbing/australia/routes?page=1"))
+url_processor()
