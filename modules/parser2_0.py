@@ -105,7 +105,6 @@ def main_parser(html):
             write_to_file(get_ascent_title(row), get_ascent_type(row),
                           get_ascent_difficulty(row)[0],
                           get_ascent_difficulty(row)[1])
-            # print("the data was written to the file successfully!")
 
 
 def write_to_file(title, style, difficulty, category):
@@ -114,6 +113,7 @@ def write_to_file(title, style, difficulty, category):
     :param title: str
     :param style: str
     :param difficulty: str
+    :param category: str
     :return:
     """
     with open("final_file_with_all_data.csv", "a") as csv_file:
