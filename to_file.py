@@ -176,7 +176,6 @@ def write_to_file(title, style, difficulty, category, location):
 
 print("ok")
 url_processor()
-
 # from file_contents import data
 # main_parser(data)
 # print(get_lat_lon("/climbing/switzerland/denti-della-vecchia/route/1868627349"))
