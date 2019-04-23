@@ -72,7 +72,6 @@ def format_title(arg):
 #     NAME.append(splitted)
 #     return splitted
 
-
 def get_lat_lon(arg):
     """
     Function for getting latitude and longitude of each ascent and mountain
