@@ -37,6 +37,7 @@ def url_processor():
         while 1:
             query = {"page": page_increment(i)}
             response = requests.get(address, params=query)
+            # response = requests.get("https://www.thecrag.com/climbing/australia/grampians/dreamtime-wall/routes")
             # time.sleep(3)
             try:
                 main_parser(response.content)
@@ -56,6 +57,7 @@ def format_title(arg):
             splitted[el] = splitted[el].replace("\xa0", '')
             splitted[el] = splitted[el].strip()
         NAME.append(splitted)
+        # print(s)
         return splitted, splitted + [arg.text]
 
     else:
@@ -81,13 +83,22 @@ def get_lat_lon(arg):
     # secondary_url = bs_obj.find("a", {"title": re.compile(".+")})
 
     full_url = "https://www.thecrag.com" + arg["href"]
-    resp = urllib.request.urlopen(full_url)
-    bs_obj = BeautifulSoup(resp, "lxml")
-    rez = bs_obj.find("dl", {"class": "areaInfo"},
-                      string=re.compile(
-                          '\nLat/Long.+')).text.strip()[10:]
-    COORDS.append(rez)
-    return rez
+    try:
+        resp = urllib.request.urlopen(full_url)
+        bs_obj = BeautifulSoup(resp.read(), "lxml")
+        rez = bs_obj.find("dl", {"class": "areaInfo"},
+                          string=re.compile(
+                              '\nLat/Long.+')).text.strip()[10:]
+        COORDS.append(rez)
+        return rez
+    except:
+        print(full_url)
+        return "Unknown coords"
+    # params = urllib.urlencode(post_params)
+    # f = urllib.urlopen(url, params)
+    # print
+    # .read()
+
 
     # else:
     #     return "Unknown coords"
@@ -98,11 +109,13 @@ def check_eq(arg):
     # secondary_url = bs_obj.find("a", {"title": re.compile(".+")})
     x = format_title(arg)
     y = get_lat_lon(arg)
+    # if y:
     if x[0] == NAME[-2]:
         # title, coord
         return x[1], COORDS[-1]
     else:
         return x[1], y
+
 
 
 def get_ascent_type(bs_obj):
@@ -168,7 +181,7 @@ def write_to_file(title, style, difficulty, category, location):
     :return:
     """
 
-    with open("test_locations_v2_0.csv", "a") as csv_file:
+    with open("locations_v8_0.csv", "a") as csv_file:
         writer = csv.writer(csv_file, delimiter=',')
         writer.writerow(
             title + [style] + [difficulty] + [category] + [location])
@@ -179,3 +192,4 @@ url_processor()
 # from file_contents import data
 # main_parser(data)
 # print(get_lat_lon("/climbing/switzerland/denti-della-vecchia/route/1868627349"))
+# https://www.thecrag.com/climbing/australia/grampians/dreamtime-wall/routes
