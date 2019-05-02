@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css"
+          href="{{ url_for('static', filename='table_style.css') }}">
+    <link rel="stylesheet" , type="text/css"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<table>
+    <tr>
+        <th>Country</th>
+        <th>Full location</th>
+        <th>Style</th>
+        <th>Difficulty</th>
+        <th>Category</th>
+    </tr>
+    {% for ascent in ascents%}
+    <tr>
+        <td> {{ ascent.country }}</td>
+        <td>
+            <!--            <form method="post" name="someForm">-->
+            <a href='{{ ascent }}'>
+                {{ ascent.location }} </a>
+            <!--            </form>-->
+
+        </td>
+        <td>{{ ascent.style }}</td>
+        <td>{{ ascent.grade }}</td>
+        <td>{{ ascent.category }}</td>
+    </tr>
+
+    {% endfor %}
+</table>
+
+
+</body>
+</html>
