@@ -1,6 +1,15 @@
-#
 import json, requests
 import folium
+import sqlite3
+
+
+def get_mount_coords(asc_id):
+    with sqlite3.connect("myTable2.db") as conn:
+        cursor = conn.cursor()
+        cursor.execute(
+            "SELECT coordinates FROM locations WHERE id in (?)",
+            (asc_id,))
+        return cursor.fetchone()[0]
 
 
 def get_shop_coords(mountain_coords):
@@ -43,4 +52,11 @@ def create_map(mountain_coords, shop_coords):
                       popup=str(i),
                       icon=folium.Icon(color='blue')).add_to(map1)
 
-    map1.save("../templates/map.html")
+    map1.save("templates/map.html")
+
+    # return "map.html"
+
+# mountain_coordinates = get_mount_coords(68)
+# shop_coordinates = get_shop_coords(mountain_coordinates)
+# fname = create_map(mountain_coordinates, shop_coordinates)
+# print(fname)

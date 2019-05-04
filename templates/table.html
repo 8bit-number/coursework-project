@@ -9,15 +9,30 @@
           href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-<form action="/loc" name="myform" method="post">
-    <Select size=10 onchange="myform.submit()" name="loc">
-        {% for ascent in ascents%}
-        <option> {{ ascent.country, ascent.location, ascent.style,
-            ascent.category }}
-        </option>
-        {% endfor %}
-    </select>
-</form>
+<table>
+    <tr>
+        <th>Country</th>
+        <th>Full location</th>
+        <th>Style</th>
+        <th>Difficulty</th>
+        <th>Category</th>
+    </tr>
+    {% for ascent in ascents%}
+    <tr>
+        <td> {{ ascent.country }}</td>
+        <td>
+            <a href='location/{{ ascent.my_id }}'>
+                {{ ascent.location }} </a>
+
+        </td>
+        <td>{{ ascent.style }}</td>
+        <td>{{ ascent.grade }}</td>
+        <td>{{ ascent.category }}</td>
+    </tr>
+
+    {% endfor %}
+</table>
+
 
 </body>
 </html>
