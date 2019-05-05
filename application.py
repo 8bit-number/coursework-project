@@ -4,7 +4,7 @@ from countries_db import countries
 from process_data import *
 
 app = Flask(__name__)
-app.config['TEMPLATES_AUTO_RELOAD'] = True
+# app.config['TEMPLATES_AUTO_RELOAD'] = True
 
 difficulties = ["Beginner", "Intermediate", "Experienced", "Expert",
                 "Elite"]
@@ -12,19 +12,20 @@ difficulties = ["Beginner", "Intermediate", "Experienced", "Expert",
 
 @app.route("/", methods=['GET', 'POST'])
 def home():
-    if request.method == "GET" and not request.args.get('country'):
-        return render_template('home.html', locations=countries,
-                               difficulties=difficulties)
-    else:
-        country = request.args.get('country')
-        diff = request.args.get("difficulty")
-        db = DataBase("myTable2.db")
-        if diff != "None":
-            all_data = db.execute_selection_by_difficulty(country,
-                                                          diff)
-        else:
-            all_data = db.execute_selection_by_country(country)
-        return render_template("table.html", ascents=all_data)
+    return render_template("home_hugo.html")
+    # if request.method == "GET" and not request.args.get('country'):
+    #     return render_template('home.html', locations=countries,
+    #                            difficulties=difficulties)
+    # else:
+    #     country = request.args.get('country')
+    #     diff = request.args.get("difficulty")
+    #     db = DataBase("myTable2.db")
+    #     if diff != "None":
+    #         all_data = db.execute_selection_by_difficulty(country,
+    #                                                       diff)
+    #     else:
+    #         all_data = db.execute_selection_by_country(country)
+    #     return render_template("table.html", ascents=all_data)
 
 
 @app.route('/location/<int:route_id>')
