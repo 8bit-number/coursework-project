@@ -12,12 +12,18 @@ def get_mount_coords(asc_id):
         return cursor.fetchone()[0]
 
 
+def get_id_secret():
+    with open("api_keys.json") as jf:
+        data = json.load(jf)
+    return data
+
+
 def get_shop_coords(mountain_coords):
     url = 'https://api.foursquare.com/v2/venues/search'
 
     params = dict(
-        client_id="Y0VAAR4NLGYIAGUR0RNOE14XPTLKGG3FYGBYWMIBX4YGCDQL",
-        client_secret="3JOSMX2UEJNK4PVDANRW4OWUOKWO5TZS3VLRGXC4NWN4RIZH",
+        client_id=get_id_secret()["client_id"],
+        client_secret=get_id_secret()["client_secret"],
         v='20180420',
         ll=mountain_coords,
         intent='browse',
@@ -53,10 +59,3 @@ def create_map(mountain_coords, shop_coords):
                       icon=folium.Icon(color='blue')).add_to(map1)
 
     map1.save("templates/map.html")
-
-    # return "map.html"
-
-# mountain_coordinates = get_mount_coords(68)
-# shop_coordinates = get_shop_coords(mountain_coordinates)
-# fname = create_map(mountain_coordinates, shop_coordinates)
-# print(fname)
