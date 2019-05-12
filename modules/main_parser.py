@@ -1,5 +1,5 @@
 from bs4 import BeautifulSoup
-import exceptions
+import modules.exceptions
 import requests
 import re
 import csv
@@ -98,7 +98,7 @@ def main_parser(html):
     table = soup.find_all('tr')
 
     if len(table) == 1:
-        raise exceptions.ParserException(
+        raise modules.exceptions.ParserException(
             "The url contains an empty page.")
 
     for row in table:

@@ -1,6 +1,6 @@
 import csv
 import sqlite3
-from modules.file_processor import Ascent
+from modules.ascent_processor import Ascent
 
 
 class DataBase:

@@ -1,7 +1,7 @@
 from flask import Flask, render_template, url_for, request
-from modules.transfer_file_to_db import DataBase
+from modules.csv_to_db import DataBase
 from modules.countries_db import countries
-from modules.map_gen import *
+from modules.map_generator import *
 
 app = Flask(__name__, template_folder="../templates",
             static_folder='../static')
