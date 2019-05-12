@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<head>
+    <meta http-equiv="content-type"
+          content="text/html; charset=UTF-8"/>
+    <script>L_PREFER_CANVAS = false;
+    L_NO_TOUCH = false;
+    L_DISABLE_3D = false;</script>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.4.0/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/leaflet@1.4.0/dist/leaflet.css"/>
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"/>
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet"
+          href="https://rawcdn.githack.com/python-visualization/folium/master/folium/templates/leaflet.awesome.rotate.css"/>
+    <style>html, body {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+    }</style>
+    <style>#map {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+    }</style>
+
+    <meta name="viewport" content="width=device-width,
+        initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <style>#map_4dbb7bc1f201499cb73b1b23b383e6ad {
+        position: relative;
+        width: 100.0%;
+        height: 100.0%;
+        left: 0.0%;
+        top: 0.0%;
+    }
+    </style>
+</head>
+<body>
+
+<div class="folium-map"
+     id="map_4dbb7bc1f201499cb73b1b23b383e6ad"></div>
+</body>
+<script>
+
+
+    var bounds = null;
+
+
+    var map_4dbb7bc1f201499cb73b1b23b383e6ad = L.map(
+        'map_4dbb7bc1f201499cb73b1b23b383e6ad', {
+            center: [47.48894, 9.74985],
+            zoom: 10,
+            maxBounds: bounds,
+            layers: [],
+            worldCopyJump: false,
+            crs: L.CRS.EPSG3857,
+            zoomControl: true,
+        });
+
+
+    var tile_layer_514c65c468d94441a2c3f71fe58bd206 = L.tileLayer(
+        'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+        {
+            "attribution": null,
+            "detectRetina": false,
+            "maxNativeZoom": 18,
+            "maxZoom": 18,
+            "minZoom": 0,
+            "noWrap": false,
+            "opacity": 1,
+            "subdomains": "abc",
+            "tms": false
+        }).addTo(map_4dbb7bc1f201499cb73b1b23b383e6ad);
+
+    var marker_b44bd74fa3214a85850d92f4ea09bade = L.marker(
+        [47.48894, 9.74985],
+        {
+            icon: new L.Icon.Default(),
+        }
+    ).addTo(map_4dbb7bc1f201499cb73b1b23b383e6ad);
+
+
+    var popup_31b2dfe950b64b8297c910ad35cf7554 = L.popup({
+        maxWidth: '100%'
+
+    });
+
+
+    var html_6d11fe7e47b04e21a722a7ab0fb6dc82 = $(`<div id="html_6d11fe7e47b04e21a722a7ab0fb6dc82" style="width: 100.0%; height: 100.0%;">name of the ascent</div>`)[0];
+    popup_31b2dfe950b64b8297c910ad35cf7554.setContent(html_6d11fe7e47b04e21a722a7ab0fb6dc82);
+
+
+    marker_b44bd74fa3214a85850d92f4ea09bade.bindPopup(popup_31b2dfe950b64b8297c910ad35cf7554)
+    ;
+
+
+    var marker_813c0875b85b4a788a60ddcedd5df9e5 = L.marker(
+        [47.209318, 10.141508],
+        {
+            icon: new L.Icon.Default(),
+        }
+    ).addTo(map_4dbb7bc1f201499cb73b1b23b383e6ad);
+
+
+    var icon_ad497b40806e4fe4839a41fcd9f80f99 = L.AwesomeMarkers.icon({
+        icon: 'info-sign',
+        iconColor: 'white',
+        markerColor: 'blue',
+        prefix: 'glyphicon',
+        extraClasses: 'fa-rotate-0'
+    });
+    marker_813c0875b85b4a788a60ddcedd5df9e5.setIcon(icon_ad497b40806e4fe4839a41fcd9f80f99);
+
+
+    var popup_fc8494484a394df29762ceeea690949b = L.popup({
+        maxWidth: '100%'
+
+    });
+
+
+    var html_8cbffc7066944e0788c0a545a5680bde = $(`<div id="html_8cbffc7066944e0788c0a545a5680bde" style="width: 100.0%; height: 100.0%;">Sport Alp Skiverleih</div>`)[0];
+    popup_fc8494484a394df29762ceeea690949b.setContent(html_8cbffc7066944e0788c0a545a5680bde);
+
+
+    marker_813c0875b85b4a788a60ddcedd5df9e5.bindPopup(popup_fc8494484a394df29762ceeea690949b)
+    ;
+
+
+    var marker_eda8ae93233641f19d780a40b42d9c0d = L.marker(
+        [47.09804389350873, 9.8643117833383],
+        {
+            icon: new L.Icon.Default(),
+        }
+    ).addTo(map_4dbb7bc1f201499cb73b1b23b383e6ad);
+
+
+    var icon_3c80241c03674ae1be33096e1a29d093 = L.AwesomeMarkers.icon({
+        icon: 'info-sign',
+        iconColor: 'white',
+        markerColor: 'blue',
+        prefix: 'glyphicon',
+        extraClasses: 'fa-rotate-0'
+    });
+    marker_eda8ae93233641f19d780a40b42d9c0d.setIcon(icon_3c80241c03674ae1be33096e1a29d093);
+
+
+    var popup_84263d9cf6b446009c176266b380aaab = L.popup({
+        maxWidth: '100%'
+
+    });
+
+
+    var html_022593fba57942dea31ce467959f5b0f = $(`<div id="html_022593fba57942dea31ce467959f5b0f" style="width: 100.0%; height: 100.0%;">Outlet Vandans</div>`)[0];
+    popup_84263d9cf6b446009c176266b380aaab.setContent(html_022593fba57942dea31ce467959f5b0f);
+
+
+    marker_eda8ae93233641f19d780a40b42d9c0d.bindPopup(popup_84263d9cf6b446009c176266b380aaab)
+    ;
+
+
+    var marker_dbdc1a1a19d14012b938ab51c0fe94d7 = L.marker(
+        [47.5039072, 9.7454853],
+        {
+            icon: new L.Icon.Default(),
+        }
+    ).addTo(map_4dbb7bc1f201499cb73b1b23b383e6ad);
+
+
+    var icon_6ec7a51912b645fa9ca34a8794ab9a9c = L.AwesomeMarkers.icon({
+        icon: 'info-sign',
+        iconColor: 'white',
+        markerColor: 'blue',
+        prefix: 'glyphicon',
+        extraClasses: 'fa-rotate-0'
+    });
+    marker_dbdc1a1a19d14012b938ab51c0fe94d7.setIcon(icon_6ec7a51912b645fa9ca34a8794ab9a9c);
+
+
+    var popup_96324b9255bf4d00b79023e7682f5e0b = L.popup({
+        maxWidth: '100%'
+
+    });
+
+
+    var html_ebdb29e44aa0424188bf04bdcc87bacd = $(`<div id="html_ebdb29e44aa0424188bf04bdcc87bacd" style="width: 100.0%; height: 100.0%;">Blue Tomato</div>`)[0];
+    popup_96324b9255bf4d00b79023e7682f5e0b.setContent(html_ebdb29e44aa0424188bf04bdcc87bacd);
+
+
+    marker_dbdc1a1a19d14012b938ab51c0fe94d7.bindPopup(popup_96324b9255bf4d00b79023e7682f5e0b)
+    ;
+
+
+    var marker_7466f4973957485c9a9240bd55be20c2 = L.marker(
+        [47.35613750893679, 10.183915609903542],
+        {
+            icon: new L.Icon.Default(),
+        }
+    ).addTo(map_4dbb7bc1f201499cb73b1b23b383e6ad);
+
+
+    var icon_e789850e9cbd460b8ce9655181a55af6 = L.AwesomeMarkers.icon({
+        icon: 'info-sign',
+        iconColor: 'white',
+        markerColor: 'blue',
+        prefix: 'glyphicon',
+        extraClasses: 'fa-rotate-0'
+    });
+    marker_7466f4973957485c9a9240bd55be20c2.setIcon(icon_e789850e9cbd460b8ce9655181a55af6);
+
+
+    var popup_a3727fcceac64018b59e0d530e7073fc = L.popup({
+        maxWidth: '100%'
+
+    });
+
+
+    var html_5c730b9f88b9473fa42f1e3ea88c477c = $(`<div id="html_5c730b9f88b9473fa42f1e3ea88c477c" style="width: 100.0%; height: 100.0%;">Fun-Alp</div>`)[0];
+    popup_a3727fcceac64018b59e0d530e7073fc.setContent(html_5c730b9f88b9473fa42f1e3ea88c477c);
+
+
+    marker_7466f4973957485c9a9240bd55be20c2.bindPopup(popup_a3727fcceac64018b59e0d530e7073fc)
+    ;
+
+
+    var marker_2aba0d0ca697451ab8ee0ccb6fe6c017 = L.marker(
+        [47.722248, 10.314984],
+        {
+            icon: new L.Icon.Default(),
+        }
+    ).addTo(map_4dbb7bc1f201499cb73b1b23b383e6ad);
+
+
+    var icon_787321fee9804e7a8a07dcb0e630aca4 = L.AwesomeMarkers.icon({
+        icon: 'info-sign',
+        iconColor: 'white',
+        markerColor: 'blue',
+        prefix: 'glyphicon',
+        extraClasses: 'fa-rotate-0'
+    });
+    marker_2aba0d0ca697451ab8ee0ccb6fe6c017.setIcon(icon_787321fee9804e7a8a07dcb0e630aca4);
+
+
+    var popup_a76b8d5581e240ef9ba908de6126c656 = L.popup({
+        maxWidth: '100%'
+
+    });
+
+
+    var html_8d241253e5754b4785bddd0fe4aa7ecd = $(`<div id="html_8d241253e5754b4785bddd0fe4aa7ecd" style="width: 100.0%; height: 100.0%;">Zenzinger's Boardshop</div>`)[0];
+    popup_a76b8d5581e240ef9ba908de6126c656.setContent(html_8d241253e5754b4785bddd0fe4aa7ecd);
+
+
+    marker_2aba0d0ca697451ab8ee0ccb6fe6c017.bindPopup(popup_a76b8d5581e240ef9ba908de6126c656)
+    ;
+
+
+    var marker_10d291a587fc4686a8ddd29a9081a0b5 = L.marker(
+        [47.65966936680334, 9.178215812634459],
+        {
+            icon: new L.Icon.Default(),
+        }
+    ).addTo(map_4dbb7bc1f201499cb73b1b23b383e6ad);
+
+
+    var icon_e877e71647064027bab78c5c72f99a33 = L.AwesomeMarkers.icon({
+        icon: 'info-sign',
+        iconColor: 'white',
+        markerColor: 'blue',
+        prefix: 'glyphicon',
+        extraClasses: 'fa-rotate-0'
+    });
+    marker_10d291a587fc4686a8ddd29a9081a0b5.setIcon(icon_e877e71647064027bab78c5c72f99a33);
+
+
+    var popup_25a59885117c4c66b2452389d87906f5 = L.popup({
+        maxWidth: '100%'
+
+    });
+
+
+    var html_e5f9454a96da40cbbf15343d874fda84 = $(`<div id="html_e5f9454a96da40cbbf15343d874fda84" style="width: 100.0%; height: 100.0%;">Dieter Engert Yacht-Zubehör</div>`)[0];
+    popup_25a59885117c4c66b2452389d87906f5.setContent(html_e5f9454a96da40cbbf15343d874fda84);
+
+
+    marker_10d291a587fc4686a8ddd29a9081a0b5.bindPopup(popup_25a59885117c4c66b2452389d87906f5)
+    ;
+
+
+    var marker_9f83b203045a48b0b16d65c2d2045b00 = L.marker(
+        [47.510876102775676, 10.274804671291873],
+        {
+            icon: new L.Icon.Default(),
+        }
+    ).addTo(map_4dbb7bc1f201499cb73b1b23b383e6ad);
+
+
+    var icon_c7fae9825707441f8e7968848252ebb9 = L.AwesomeMarkers.icon({
+        icon: 'info-sign',
+        iconColor: 'white',
+        markerColor: 'blue',
+        prefix: 'glyphicon',
+        extraClasses: 'fa-rotate-0'
+    });
+    marker_9f83b203045a48b0b16d65c2d2045b00.setIcon(icon_c7fae9825707441f8e7968848252ebb9);
+
+
+    var popup_306e9ef184b74174b5576db0fef4736b = L.popup({
+        maxWidth: '100%'
+
+    });
+
+
+    var html_594101e77b974f80bcb6a7f6ee12d4d3 = $(`<div id="html_594101e77b974f80bcb6a7f6ee12d4d3" style="width: 100.0%; height: 100.0%;">RidersHeaven Store</div>`)[0];
+    popup_306e9ef184b74174b5576db0fef4736b.setContent(html_594101e77b974f80bcb6a7f6ee12d4d3);
+
+
+    marker_9f83b203045a48b0b16d65c2d2045b00.bindPopup(popup_306e9ef184b74174b5576db0fef4736b)
+    ;
+
+
+    var marker_bb28faf94d984076bdb53526bb5e28fc = L.marker(
+        [47.357715, 10.18905],
+        {
+            icon: new L.Icon.Default(),
+        }
+    ).addTo(map_4dbb7bc1f201499cb73b1b23b383e6ad);
+
+
+    var icon_db7647197cfb43edaf31501b351d0259 = L.AwesomeMarkers.icon({
+        icon: 'info-sign',
+        iconColor: 'white',
+        markerColor: 'blue',
+        prefix: 'glyphicon',
+        extraClasses: 'fa-rotate-0'
+    });
+    marker_bb28faf94d984076bdb53526bb5e28fc.setIcon(icon_db7647197cfb43edaf31501b351d0259);
+
+
+    var popup_6e2970511ecf41e68fdfb7ef616b28d6 = L.popup({
+        maxWidth: '100%'
+
+    });
+
+
+    var html_4fd4c53fa4bd41d78ad7b2c571e424bc = $(`<div id="html_4fd4c53fa4bd41d78ad7b2c571e424bc" style="width: 100.0%; height: 100.0%;">skififi</div>`)[0];
+    popup_6e2970511ecf41e68fdfb7ef616b28d6.setContent(html_4fd4c53fa4bd41d78ad7b2c571e424bc);
+
+
+    marker_bb28faf94d984076bdb53526bb5e28fc.bindPopup(popup_6e2970511ecf41e68fdfb7ef616b28d6)
+    ;
+
+
+    var marker_dd94ae87c13547918ae8bc17d42aa522 = L.marker(
+        [47.424695386946325, 9.374789076099239],
+        {
+            icon: new L.Icon.Default(),
+        }
+    ).addTo(map_4dbb7bc1f201499cb73b1b23b383e6ad);
+
+
+    var icon_e188b3850af54d29a94a1d1848058013 = L.AwesomeMarkers.icon({
+        icon: 'info-sign',
+        iconColor: 'white',
+        markerColor: 'blue',
+        prefix: 'glyphicon',
+        extraClasses: 'fa-rotate-0'
+    });
+    marker_dd94ae87c13547918ae8bc17d42aa522.setIcon(icon_e188b3850af54d29a94a1d1848058013);
+
+
+    var popup_a737a3cd061240149c36610012683dd6 = L.popup({
+        maxWidth: '100%'
+
+    });
+
+
+    var html_5f4cc56de9a64d1281c3c102847b1faa = $(`<div id="html_5f4cc56de9a64d1281c3c102847b1faa" style="width: 100.0%; height: 100.0%;">Doodah</div>`)[0];
+    popup_a737a3cd061240149c36610012683dd6.setContent(html_5f4cc56de9a64d1281c3c102847b1faa);
+
+
+    marker_dd94ae87c13547918ae8bc17d42aa522.bindPopup(popup_a737a3cd061240149c36610012683dd6)
+    ;
+
+
+    var marker_febccac333ca46bda166bcfa8bb82f20 = L.marker(
+        [47.5133152008057, 10.279185295105],
+        {
+            icon: new L.Icon.Default(),
+        }
+    ).addTo(map_4dbb7bc1f201499cb73b1b23b383e6ad);
+
+
+    var icon_14bac679b14d4d4582c5e6dec8f36d58 = L.AwesomeMarkers.icon({
+        icon: 'info-sign',
+        iconColor: 'white',
+        markerColor: 'blue',
+        prefix: 'glyphicon',
+        extraClasses: 'fa-rotate-0'
+    });
+    marker_febccac333ca46bda166bcfa8bb82f20.setIcon(icon_14bac679b14d4d4582c5e6dec8f36d58);
+
+
+    var popup_ae75fea2debb470eaf6c113ef7870e51 = L.popup({
+        maxWidth: '100%'
+
+    });
+
+
+    var html_b6a5c39c50f547d59b2e52f1c035f50c = $(`<div id="html_b6a5c39c50f547d59b2e52f1c035f50c" style="width: 100.0%; height: 100.0%;">Ski- und Snowboardverleih</div>`)[0];
+    popup_ae75fea2debb470eaf6c113ef7870e51.setContent(html_b6a5c39c50f547d59b2e52f1c035f50c);
+
+
+    marker_febccac333ca46bda166bcfa8bb82f20.bindPopup(popup_ae75fea2debb470eaf6c113ef7870e51)
+    ;
+
+
+    var marker_b92e97beb2294abb99ad3f9627d67c93 = L.marker(
+        [47.54971317417807, 9.722862180851289],
+        {
+            icon: new L.Icon.Default(),
+        }
+    ).addTo(map_4dbb7bc1f201499cb73b1b23b383e6ad);
+
+
+    var icon_c6ac1fd7becb4f96bdd84802e10f638b = L.AwesomeMarkers.icon({
+        icon: 'info-sign',
+        iconColor: 'white',
+        markerColor: 'blue',
+        prefix: 'glyphicon',
+        extraClasses: 'fa-rotate-0'
+    });
+    marker_b92e97beb2294abb99ad3f9627d67c93.setIcon(icon_c6ac1fd7becb4f96bdd84802e10f638b);
+
+
+    var popup_07c7ff44463e43e89f31c96e8f4a54fb = L.popup({
+        maxWidth: '100%'
+
+    });
+
+
+    var html_8dd2151c91cc4c88a5a033a7ead167fe = $(`<div id="html_8dd2151c91cc4c88a5a033a7ead167fe" style="width: 100.0%; height: 100.0%;">Boardershop Lindau</div>`)[0];
+    popup_07c7ff44463e43e89f31c96e8f4a54fb.setContent(html_8dd2151c91cc4c88a5a033a7ead167fe);
+
+
+    marker_b92e97beb2294abb99ad3f9627d67c93.bindPopup(popup_07c7ff44463e43e89f31c96e8f4a54fb)
+    ;
+
+
+    var marker_3448971d827a4cf489c30b2e6fade7c5 = L.marker(
+        [47.256918461636516, 9.615585071971893],
+        {
+            icon: new L.Icon.Default(),
+        }
+    ).addTo(map_4dbb7bc1f201499cb73b1b23b383e6ad);
+
+
+    var icon_1c569b026a0b48c49912e3732ead015d = L.AwesomeMarkers.icon({
+        icon: 'info-sign',
+        iconColor: 'white',
+        markerColor: 'blue',
+        prefix: 'glyphicon',
+        extraClasses: 'fa-rotate-0'
+    });
+    marker_3448971d827a4cf489c30b2e6fade7c5.setIcon(icon_1c569b026a0b48c49912e3732ead015d);
+
+
+    var popup_abc59ffc0f1c4230a404f18b8254c8fc = L.popup({
+        maxWidth: '100%'
+
+    });
+
+
+    var html_460be82a9fd84e27a5a2e372c7738648 = $(`<div id="html_460be82a9fd84e27a5a2e372c7738648" style="width: 100.0%; height: 100.0%;">Alton's Skatehouse</div>`)[0];
+    popup_abc59ffc0f1c4230a404f18b8254c8fc.setContent(html_460be82a9fd84e27a5a2e372c7738648);
+
+
+    marker_3448971d827a4cf489c30b2e6fade7c5.bindPopup(popup_abc59ffc0f1c4230a404f18b8254c8fc)
+    ;
+
+
+    var marker_8f3efe6f95e94b0c83c2c562405afd03 = L.marker(
+        [47.72491595310664, 10.315065868212566],
+        {
+            icon: new L.Icon.Default(),
+        }
+    ).addTo(map_4dbb7bc1f201499cb73b1b23b383e6ad);
+
+
+    var icon_7f3ba8c945ff4b70929a1e72d16bdda5 = L.AwesomeMarkers.icon({
+        icon: 'info-sign',
+        iconColor: 'white',
+        markerColor: 'blue',
+        prefix: 'glyphicon',
+        extraClasses: 'fa-rotate-0'
+    });
+    marker_8f3efe6f95e94b0c83c2c562405afd03.setIcon(icon_7f3ba8c945ff4b70929a1e72d16bdda5);
+
+
+    var popup_88ee735372784498b6145a1eb77bbba8 = L.popup({
+        maxWidth: '100%'
+
+    });
+
+
+    var html_027ccd1c72ec428d9d13dabf1518f896 = $(`<div id="html_027ccd1c72ec428d9d13dabf1518f896" style="width: 100.0%; height: 100.0%;">5ive</div>`)[0];
+    popup_88ee735372784498b6145a1eb77bbba8.setContent(html_027ccd1c72ec428d9d13dabf1518f896);
+
+
+    marker_8f3efe6f95e94b0c83c2c562405afd03.bindPopup(popup_88ee735372784498b6145a1eb77bbba8)
+    ;
+
+
+    var marker_a76eb19821da408e9f7f37667b433453 = L.marker(
+        [47.66633199743411, 9.38247432056371],
+        {
+            icon: new L.Icon.Default(),
+        }
+    ).addTo(map_4dbb7bc1f201499cb73b1b23b383e6ad);
+
+
+    var icon_7b5bf895bf4e4e36bd738a1714230f4b = L.AwesomeMarkers.icon({
+        icon: 'info-sign',
+        iconColor: 'white',
+        markerColor: 'blue',
+        prefix: 'glyphicon',
+        extraClasses: 'fa-rotate-0'
+    });
+    marker_a76eb19821da408e9f7f37667b433453.setIcon(icon_7b5bf895bf4e4e36bd738a1714230f4b);
+
+
+    var popup_a99946279b52417ab60500a7c27bdd15 = L.popup({
+        maxWidth: '100%'
+
+    });
+
+
+    var html_18718b27247e44c29041be83553782d4 = $(`<div id="html_18718b27247e44c29041be83553782d4" style="width: 100.0%; height: 100.0%;">Südwestmesse</div>`)[0];
+    popup_a99946279b52417ab60500a7c27bdd15.setContent(html_18718b27247e44c29041be83553782d4);
+
+
+    marker_a76eb19821da408e9f7f37667b433453.bindPopup(popup_a99946279b52417ab60500a7c27bdd15)
+    ;
+
+
+    var marker_d965f3c4012b496bbe68bd5245cded1a = L.marker(
+        [47.663495, 9.175438],
+        {
+            icon: new L.Icon.Default(),
+        }
+    ).addTo(map_4dbb7bc1f201499cb73b1b23b383e6ad);
+
+
+    var icon_b3c1e641d9f14009a2cf4476bd8ca657 = L.AwesomeMarkers.icon({
+        icon: 'info-sign',
+        iconColor: 'white',
+        markerColor: 'blue',
+        prefix: 'glyphicon',
+        extraClasses: 'fa-rotate-0'
+    });
+    marker_d965f3c4012b496bbe68bd5245cded1a.setIcon(icon_b3c1e641d9f14009a2cf4476bd8ca657);
+
+
+    var popup_0547893d02984bcfafb67879c81bc371 = L.popup({
+        maxWidth: '100%'
+
+    });
+
+
+    var html_2a3676492b20470badadb79610abd321 = $(`<div id="html_2a3676492b20470badadb79610abd321" style="width: 100.0%; height: 100.0%;">Frontline</div>`)[0];
+    popup_0547893d02984bcfafb67879c81bc371.setContent(html_2a3676492b20470badadb79610abd321);
+
+
+    marker_d965f3c4012b496bbe68bd5245cded1a.bindPopup(popup_0547893d02984bcfafb67879c81bc371)
+    ;
+
+
+    var marker_bf7e881d57e045d38f4718699c54fc12 = L.marker(
+        [47.424453592528025, 9.37594592479762],
+        {
+            icon: new L.Icon.Default(),
+        }
+    ).addTo(map_4dbb7bc1f201499cb73b1b23b383e6ad);
+
+
+    var icon_89ebcd68d65143ab97f1157e5a2ef42c = L.AwesomeMarkers.icon({
+        icon: 'info-sign',
+        iconColor: 'white',
+        markerColor: 'blue',
+        prefix: 'glyphicon',
+        extraClasses: 'fa-rotate-0'
+    });
+    marker_bf7e881d57e045d38f4718699c54fc12.setIcon(icon_89ebcd68d65143ab97f1157e5a2ef42c);
+
+
+    var popup_0a104d52c8b64f49866a3649de10a435 = L.popup({
+        maxWidth: '100%'
+
+    });
+
+
+    var html_7b4735e4063b4949b7512e0055f9475c = $(`<div id="html_7b4735e4063b4949b7512e0055f9475c" style="width: 100.0%; height: 100.0%;">Shaka</div>`)[0];
+    popup_0a104d52c8b64f49866a3649de10a435.setContent(html_7b4735e4063b4949b7512e0055f9475c);
+
+
+    marker_bf7e881d57e045d38f4718699c54fc12.bindPopup(popup_0a104d52c8b64f49866a3649de10a435)
+    ;
+
+
+    var marker_0377fe0f0b254f0d8717b10c032bd5d7 = L.marker(
+        [47.78074183195979, 9.616083857173455],
+        {
+            icon: new L.Icon.Default(),
+        }
+    ).addTo(map_4dbb7bc1f201499cb73b1b23b383e6ad);
+
+
+    var icon_c45935f14df74a70a8e01a21d26b6908 = L.AwesomeMarkers.icon({
+        icon: 'info-sign',
+        iconColor: 'white',
+        markerColor: 'blue',
+        prefix: 'glyphicon',
+        extraClasses: 'fa-rotate-0'
+    });
+    marker_0377fe0f0b254f0d8717b10c032bd5d7.setIcon(icon_c45935f14df74a70a8e01a21d26b6908);
+
+
+    var popup_a16a6615284b4eeb8f90aea31dec34fb = L.popup({
+        maxWidth: '100%'
+
+    });
+
+
+    var html_bab1350d84e94f89a3ce70914c43bb79 = $(`<div id="html_bab1350d84e94f89a3ce70914c43bb79" style="width: 100.0%; height: 100.0%;">Fossy Skateshop</div>`)[0];
+    popup_a16a6615284b4eeb8f90aea31dec34fb.setContent(html_bab1350d84e94f89a3ce70914c43bb79);
+
+
+    marker_0377fe0f0b254f0d8717b10c032bd5d7.bindPopup(popup_a16a6615284b4eeb8f90aea31dec34fb)
+    ;
+
+
+    var marker_9c0f5abd749f4c0c9a30e4f5167dc81f = L.marker(
+        [47.721248071166556, 9.387936694392193],
+        {
+            icon: new L.Icon.Default(),
+        }
+    ).addTo(map_4dbb7bc1f201499cb73b1b23b383e6ad);
+
+
+    var icon_15635a234a6846588107c7e01b7642c2 = L.AwesomeMarkers.icon({
+        icon: 'info-sign',
+        iconColor: 'white',
+        markerColor: 'blue',
+        prefix: 'glyphicon',
+        extraClasses: 'fa-rotate-0'
+    });
+    marker_9c0f5abd749f4c0c9a30e4f5167dc81f.setIcon(icon_15635a234a6846588107c7e01b7642c2);
+
+
+    var popup_88d1cc6c96c1430dba9146ac8be18951 = L.popup({
+        maxWidth: '100%'
+
+    });
+
+
+    var html_32c6c236b3964d3d9343f73a9ba58b64 = $(`<div id="html_32c6c236b3964d3d9343f73a9ba58b64" style="width: 100.0%; height: 100.0%;">Guldin</div>`)[0];
+    popup_88d1cc6c96c1430dba9146ac8be18951.setContent(html_32c6c236b3964d3d9343f73a9ba58b64);
+
+
+    marker_9c0f5abd749f4c0c9a30e4f5167dc81f.bindPopup(popup_88d1cc6c96c1430dba9146ac8be18951)
+    ;
+
+
+</script>
