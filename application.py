@@ -25,7 +25,7 @@ def home():
 
     if request.method == "GET" and not request.args.get('country'):
         return render_template(
-            'home.html', locations=countries, difficulties=DIFFICULTIES,
+            'main.html', locations=countries, difficulties=DIFFICULTIES,
         )
 
     country = request.args.get('country')
