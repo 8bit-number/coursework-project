@@ -15,6 +15,8 @@ DIFFICULTIES = (
 )
 
 db_path = ""
+foursquare_client_id = ""
+foursquare_client_secret = ""
 
 
 @app.route("/", methods=['GET', 'POST'])
@@ -30,7 +32,7 @@ def home():
     diff = request.args.get("difficulty", None)
 
     db = DataBase(db_path)
-    if diff:
+    if diff != "None":
         all_data = db.execute_selection_by_difficulty(country, diff)
     else:
         all_data = db.execute_selection_by_country(country)
@@ -40,9 +42,15 @@ def home():
 
 @app.route('/location/<int:route_id>')
 def display_map(route_id):
-    mountain_coordinates = get_mount_coords(route_id)
-    shop_coordinates = get_shop_coords(mountain_coordinates)
+    mountain_coordinates = get_mount_coords(route_id, db_path)
+    shop_coordinates = get_shop_coords(
+        mountain_coordinates,
+        foursquare_client_id,
+        foursquare_client_secret,
+    )
+
     create_map(mountain_coordinates, shop_coordinates)
+
     return render_template("map.html")
 
 
@@ -53,4 +61,6 @@ if __name__ == '__main__':
     load_dotenv(dotenv_path)
 
     db_path = os.getenv("DB_PATH")
+    foursquare_client_id = os.getenv("FOURSQUARE_CLIENT_ID")
+    foursquare_client_secret = os.getenv("FOURSQUARE_CLIENT_SECRET")
     app.run(debug=True)

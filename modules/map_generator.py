@@ -3,14 +3,13 @@ import folium
 import sqlite3
 
 
-def get_mount_coords(asc_id):
+def get_mount_coords(asc_id, db_path):
     """
     function for getting the latitude and longitude
     :param asc_id:
     :return:
     """
-    with sqlite3.connect(
-            "/home/nastya/PycharmProjects/course_work/data/locations.db") as conn:
+    with sqlite3.connect(db_path) as conn:
         cursor = conn.cursor()
         cursor.execute(
             "SELECT coordinates FROM locations WHERE id in (?)",
@@ -18,18 +17,12 @@ def get_mount_coords(asc_id):
         return cursor.fetchone()[0]
 
 
-def get_api_key_secret():
-    with open("api_keys.json") as jf:
-        data = json.load(jf)
-        return data["client_id"], data["client_secret"]
-
-
-def get_shop_coords(mountain_coords):
+def get_shop_coords(mountain_coords, client_id, client_secret):
     url = 'https://api.foursquare.com/v2/venues/search'
 
     params = dict(
-        client_id=get_api_key_secret()[0],
-        client_secret=get_api_key_secret()[1],
+        client_id=client_id,
+        client_secret=client_secret,
         v='20180420',
         ll=mountain_coords,
         intent='browse',
