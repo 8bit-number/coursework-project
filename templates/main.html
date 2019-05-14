@@ -118,37 +118,36 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-lg-8 col-lg-offset-1 col-md-8 col-md-offset-1 col-sm-12 col-xs-12 post-container">
-      <div class="post-preview">
-        <a href="http://localhost:1313/post/readme/">
-          <h2 class="post-title">
-            Clean White Theme for Hugo
-          </h2>
-          <h3 class="post-subtitle">
-            How to set up this theme
-          </h3>
+    {% block content %}
+      <div class="col-lg-8 col-lg-offset-1 col-md-8 col-md-offset-1 col-sm-12 col-xs-12 post-container">
+        <div class="post-preview">
+          <a href="http://localhost:1313/post/readme/">
+            <h2 class="post-title">
+              Clean White Theme for Hugo
+            </h2>
+            <h3 class="post-subtitle">
+              How to set up this theme
+            </h3>
 
-          <div class="post-content-preview">
-            Clean White Theme for Hugo CleanWhite is a
-            clean, elegant, but fully functional blog theme
-            for Hugo. Here is a live demo site using this
-            theme. It is based on huxblog Jekyll Theme and
-            Clean Blog Jekyll Theme. These two upstream
-            projects have done awesome jobs to create a
-            blog theme, what I&rsquo;m doing here is
-            porting it to Hugo, of which I like the
-            simplicity and the much faster
-          </div>
-        </a>
-        <p class="post-meta">
-          Date
-        </p>
+            <div class="post-content-preview">
+              Clean White Theme for Hugo CleanWhite is a
+              clean, elegant, but fully functional blog theme
+              for Hugo. Here is a live demo site using this
+              theme. It is based on huxblog Jekyll Theme and
+              Clean Blog Jekyll Theme. These two upstream
+              projects have done awesome jobs to create a
+              blog theme, what I&rsquo;m doing here is
+              porting it to Hugo, of which I like the
+              simplicity and the much faster
+            </div>
+          </a>
+          <p class="post-meta">
+            Date
+          </p>
+        </div>
+        <hr>
       </div>
-      <hr>
-    </div>
-
-
-    <div class="col-lg-3 col-lg-offset-0 col-md-3 col-md-offset-0 col-sm-12 col-xs-12 sidebar-container">
+      <div class="col-lg-3 col-lg-offset-0 col-md-3 col-md-offset-0 col-sm-12 col-xs-12 sidebar-container">
       <section class="visible-md visible-lg">
         <hr>
         <h5><a href="/top/about">ABOUT ME</a></h5>
@@ -210,7 +209,7 @@
         </div>
       </section>
     </div>
-
+    {% endblock %}
   </div>
 </div>
 

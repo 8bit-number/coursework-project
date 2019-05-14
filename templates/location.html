@@ -1,0 +1,46 @@
+{% extends 'main.html' %}
+
+{% block content %}
+  <form class="form-inline" action="/location" method="get">
+    <div class="form-group mb-2">
+      <label for="countryLabel" class="sr-only">Choose country:</label>
+      <select id="countryLabel" name="country" class="form-control">
+        <option value="">Select country</option>
+        {% for country in countries %}
+          <option value="{{ country }}" {% if request.args.get('country') == country %}selected{% endif %}>{{ country }}</option>
+        {% endfor %}
+      </select>
+      <label for="difficultyLabel" class="sr-only">Choose difficulty:</label>
+      <select id="difficultyLabel" name="difficulty" class="form-control">
+        <option value="">Select difficulty</option>
+        {% for diff in difficulties %}
+          <option value="{{ diff }}" {% if request.args.get('difficulty') == diff %}selected{% endif %}>{{ diff }}</option>
+        {% endfor %}
+      </select>
+    </div>
+    <button type="submit" class="btn btn-success mb-2">Retrieve</button>
+  </form>
+  {% if ascents %}
+    <table>
+    <tr>
+      <th>Country</th>
+      <th>Full location</th>
+      <th>Style</th>
+      <th>Difficulty</th>
+      <th>Category</th>
+    </tr>
+    {% for ascent in ascents %}
+      <tr>
+        <td> {{ ascent.country }}</td>
+        <td>
+          <a href='location/{{ ascent.my_id }}'>
+            {{ ascent.location }} </a>
+        </td>
+        <td>{{ ascent.style }}</td>
+        <td>{{ ascent.grade }}</td>
+        <td>{{ ascent.category }}</td>
+      </tr>
+    {% endfor %}
+  {% endif %}
+</table>
+{% endblock %}

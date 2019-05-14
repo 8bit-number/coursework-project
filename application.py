@@ -19,25 +19,36 @@ foursquare_client_id = ""
 foursquare_client_secret = ""
 
 
-@app.route("/", methods=['GET', 'POST'])
+@app.route("/", methods=['GET'])
 def home():
+    return render_template('main.html')
+
+
+@app.route("/location", methods=['GET', 'POST'])
+def location():
     countries = locations(db_path)
 
-    if request.method == "GET" and not request.args.get('country'):
-        return render_template(
-            'main.html', locations=countries, difficulties=DIFFICULTIES,
-        )
+    kwargs = dict(
+        ascents=None,
+        countries=countries,
+        difficulties=DIFFICULTIES
+    )
 
     country = request.args.get('country')
-    diff = request.args.get("difficulty", None)
+    diff = request.args.get('difficulty')
+
+    if not country and not diff:
+        return render_template("location.html", **kwargs)
 
     db = DataBase(db_path)
-    if diff != "None":
-        all_data = db.execute_selection_by_difficulty(country, diff)
+    if diff != "":
+        ascents = db.execute_selection_by_difficulty(country, diff)
     else:
-        all_data = db.execute_selection_by_country(country)
+        ascents = db.execute_selection_by_country(country)
 
-    return render_template("table.html", ascents=all_data)
+    kwargs['ascents'] = ascents
+
+    return render_template("location.html", **kwargs)
 
 
 @app.route('/location/<int:route_id>')

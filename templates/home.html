@@ -1,35 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-    <link rel="stylesheet" type="text/css"
-          href="{{ url_for('static', filename='custom_box.css') }}">
-</head>
-<body>
-<div class="box">
-    <form action="/" method="get">
-        Choose country: <br>
-        <select name="country">
-            <option>Select country</option>
-            {% for loc in locations %}
-            <option>{{ loc }}</option>
-            {% endfor %}
-        </select>
-        <br>
-        Choose difficulty: <br>
-        <select name="difficulty">
-            <option value="None">Select difficulty</option>
-            {% for diff in difficulties %}
-            <option>{{ diff }}</option>
-            {% endfor %}
-        </select>
+{% extends 'main.html' %}
+{% block content %}
 
-
-        <button type="submit" class="btn btn-success">Retrieve</button>
-    </form>
-
-</div>
-
-</body>
-</html>
+{% endblock %}
