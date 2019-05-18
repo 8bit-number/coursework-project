@@ -1,0 +1,351 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>modules package &#8212; route-helper 1.0.0 documentation</title>
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="modules-package">
+<h1>modules package<a class="headerlink" href="#modules-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-modules.ascent_processor">
+<span id="modules-ascent-processor-module"></span><h2>modules.ascent_processor module<a class="headerlink" href="#module-modules.ascent_processor" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="modules.ascent_processor.Ascent">
+<em class="property">class </em><code class="descclassname">modules.ascent_processor.</code><code class="descname">Ascent</code><span class="sig-paren">(</span><em>my_id</em>, <em>country</em>, <em>location</em>, <em>coords</em>, <em>style</em>, <em>grade</em>, <em>sign=None</em>, <em>category='n/a'</em><span class="sig-paren">)</span><a class="headerlink" href="#modules.ascent_processor.Ascent" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="attribute">
+<dt id="modules.ascent_processor.Ascent.category">
+<code class="descname">category</code><a class="headerlink" href="#modules.ascent_processor.Ascent.category" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="modules.ascent_processor.Ascent.get_data">
+<code class="descname">get_data</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#modules.ascent_processor.Ascent.get_data" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-modules.config">
+<span id="modules-config-module"></span><h2>modules.config module<a class="headerlink" href="#module-modules.config" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-modules.countries">
+<span id="modules-countries-module"></span><h2>modules.countries module<a class="headerlink" href="#module-modules.countries" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="modules.countries.locations">
+<code class="descclassname">modules.countries.</code><code class="descname">locations</code><span class="sig-paren">(</span><em>db_path</em><span class="sig-paren">)</span><a class="headerlink" href="#modules.countries.locations" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-modules.csv_to_db">
+<span id="modules-csv-to-db-module"></span><h2>modules.csv_to_db module<a class="headerlink" href="#module-modules.csv_to_db" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="modules.csv_to_db.DataBase">
+<em class="property">class </em><code class="descclassname">modules.csv_to_db.</code><code class="descname">DataBase</code><span class="sig-paren">(</span><em>db_name</em><span class="sig-paren">)</span><a class="headerlink" href="#modules.csv_to_db.DataBase" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Class, that represents the database</p>
+<dl class="method">
+<dt id="modules.csv_to_db.DataBase.create_table">
+<code class="descname">create_table</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#modules.csv_to_db.DataBase.create_table" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="modules.csv_to_db.DataBase.execute_selection_by_country">
+<code class="descname">execute_selection_by_country</code><span class="sig-paren">(</span><em>country</em><span class="sig-paren">)</span><a class="headerlink" href="#modules.csv_to_db.DataBase.execute_selection_by_country" title="Permalink to this definition">¶</a></dt>
+<dd><p>Method for getting all the mountains and ascents of the certain country,
+that is being chosen by user.
+:param country: str: name of the country
+:return: cursor object: object, that is needed for future work with db connection</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="modules.csv_to_db.DataBase.execute_selection_by_difficulty">
+<code class="descname">execute_selection_by_difficulty</code><span class="sig-paren">(</span><em>country</em>, <em>diff</em><span class="sig-paren">)</span><a class="headerlink" href="#modules.csv_to_db.DataBase.execute_selection_by_difficulty" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="modules.csv_to_db.DataBase.get_all_countries">
+<code class="descname">get_all_countries</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#modules.csv_to_db.DataBase.get_all_countries" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="modules.csv_to_db.DataBase.insert_to_table">
+<code class="descname">insert_to_table</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#modules.csv_to_db.DataBase.insert_to_table" title="Permalink to this definition">¶</a></dt>
+<dd><p>Method for inserting data into table
+:return:</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="modules.csv_to_db.DataBase.merge_columns">
+<code class="descname">merge_columns</code><span class="sig-paren">(</span><em>row</em><span class="sig-paren">)</span><a class="headerlink" href="#modules.csv_to_db.DataBase.merge_columns" title="Permalink to this definition">¶</a></dt>
+<dd><p>method to get full name of ascent as a string
+:param row: string
+:return: string</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="modules.csv_to_db.DataBase.page_increment">
+<em class="property">static </em><code class="descname">page_increment</code><span class="sig-paren">(</span><em>num</em><span class="sig-paren">)</span><a class="headerlink" href="#modules.csv_to_db.DataBase.page_increment" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-modules.exceptions">
+<span id="modules-exceptions-module"></span><h2>modules.exceptions module<a class="headerlink" href="#module-modules.exceptions" title="Permalink to this headline">¶</a></h2>
+<dl class="exception">
+<dt id="modules.exceptions.EmptyUrl">
+<em class="property">exception </em><code class="descclassname">modules.exceptions.</code><code class="descname">EmptyUrl</code><span class="sig-paren">(</span><em>msg</em><span class="sig-paren">)</span><a class="headerlink" href="#modules.exceptions.EmptyUrl" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#modules.exceptions.ParserException" title="modules.exceptions.ParserException"><code class="xref py py-class docutils literal notranslate"><span class="pre">modules.exceptions.ParserException</span></code></a></p>
+<p>Exception, raised if url is empty</p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="modules.exceptions.ParserException">
+<em class="property">exception </em><code class="descclassname">modules.exceptions.</code><code class="descname">ParserException</code><span class="sig-paren">(</span><em>msg</em><span class="sig-paren">)</span><a class="headerlink" href="#modules.exceptions.ParserException" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-modules.levels">
+<span id="modules-levels-module"></span><h2>modules.levels module<a class="headerlink" href="#module-modules.levels" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="modules.levels.Climber">
+<em class="property">class </em><code class="descclassname">modules.levels.</code><code class="descname">Climber</code><span class="sig-paren">(</span><em>climed_levels</em>, <em>country</em><span class="sig-paren">)</span><a class="headerlink" href="#modules.levels.Climber" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="method">
+<dt id="modules.levels.Climber.evaluate_difficulty">
+<code class="descname">evaluate_difficulty</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#modules.levels.Climber.evaluate_difficulty" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="modules.levels.Node">
+<em class="property">class </em><code class="descclassname">modules.levels.</code><code class="descname">Node</code><span class="sig-paren">(</span><em>data</em>, <em>children=None</em>, <em>parent=None</em><span class="sig-paren">)</span><a class="headerlink" href="#modules.levels.Node" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+</dd></dl>
+
+<dl class="class">
+<dt id="modules.levels.Tree">
+<em class="property">class </em><code class="descclassname">modules.levels.</code><code class="descname">Tree</code><a class="headerlink" href="#modules.levels.Tree" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="method">
+<dt id="modules.levels.Tree.insert_node">
+<code class="descname">insert_node</code><span class="sig-paren">(</span><em>node</em><span class="sig-paren">)</span><a class="headerlink" href="#modules.levels.Tree.insert_node" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-modules.main_parser">
+<span id="modules-main-parser-module"></span><h2>modules.main_parser module<a class="headerlink" href="#module-modules.main_parser" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="modules.main_parser.format_title">
+<code class="descclassname">modules.main_parser.</code><code class="descname">format_title</code><span class="sig-paren">(</span><em>bs_obj</em><span class="sig-paren">)</span><a class="headerlink" href="#modules.main_parser.format_title" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function for getting the ascent title and its path in the readable
+representation
+:param bs_obj: bs4 - the table, that contains only the needed html tags
+:return: list</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="modules.main_parser.get_ascent_difficulty">
+<code class="descclassname">modules.main_parser.</code><code class="descname">get_ascent_difficulty</code><span class="sig-paren">(</span><em>bs_obj</em><span class="sig-paren">)</span><a class="headerlink" href="#modules.main_parser.get_ascent_difficulty" title="Permalink to this definition">¶</a></dt>
+<dd><p>gets the ascent difficulty: Considering the fact, that some countries have
+their own grading, this data is important
+:param bs_obj:  BeautifulSoup object
+:return: str</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="modules.main_parser.get_ascent_type">
+<code class="descclassname">modules.main_parser.</code><code class="descname">get_ascent_type</code><span class="sig-paren">(</span><em>bs_obj</em><span class="sig-paren">)</span><a class="headerlink" href="#modules.main_parser.get_ascent_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>gets the ascent style: Boulder, Mixed, Trad
+it will be useful for future difficulties classification and their representation
+:param bs_obj: BeautifulSoup object
+:return: str</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="modules.main_parser.get_lat_lon">
+<code class="descclassname">modules.main_parser.</code><code class="descname">get_lat_lon</code><span class="sig-paren">(</span><em>bs_obj</em><span class="sig-paren">)</span><a class="headerlink" href="#modules.main_parser.get_lat_lon" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function for getting latitude and longitude of each ascent and mountain
+:param bs_obj: Beautiful_soup object
+:return: list - list of coords</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="modules.main_parser.main_parser">
+<code class="descclassname">modules.main_parser.</code><code class="descname">main_parser</code><span class="sig-paren">(</span><em>html</em><span class="sig-paren">)</span><a class="headerlink" href="#modules.main_parser.main_parser" title="Permalink to this definition">¶</a></dt>
+<dd><p>function to process all needed data call other minor functions
+:param html: html contents of the web-site
+:return: None</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="modules.main_parser.page_increment">
+<code class="descclassname">modules.main_parser.</code><code class="descname">page_increment</code><span class="sig-paren">(</span><em>num</em><span class="sig-paren">)</span><a class="headerlink" href="#modules.main_parser.page_increment" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="modules.main_parser.url_processor">
+<code class="descclassname">modules.main_parser.</code><code class="descname">url_processor</code><span class="sig-paren">(</span><em>page</em><span class="sig-paren">)</span><a class="headerlink" href="#modules.main_parser.url_processor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function for sending requests to certain url to get the web-page contents
+# &gt;&gt;&gt; print(type(url_processor(1)))
+# &lt;class ‘bytes’&gt;
+:param page: int - number of page in query parameter
+:return: bytes - web-page contents</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="modules.main_parser.write_to_file">
+<code class="descclassname">modules.main_parser.</code><code class="descname">write_to_file</code><span class="sig-paren">(</span><em>title</em>, <em>style</em>, <em>difficulty</em>, <em>category</em>, <em>location</em><span class="sig-paren">)</span><a class="headerlink" href="#modules.main_parser.write_to_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>write all the data to the .csv file
+:param title: list
+:param style: str
+:param difficulty: str
+:param category: str
+:param location: str
+:return:</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-modules.map_generator">
+<span id="modules-map-generator-module"></span><h2>modules.map_generator module<a class="headerlink" href="#module-modules.map_generator" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="modules.map_generator.create_map">
+<code class="descclassname">modules.map_generator.</code><code class="descname">create_map</code><span class="sig-paren">(</span><em>mountain_coords</em>, <em>shop_coords</em>, <em>route_name</em><span class="sig-paren">)</span><a class="headerlink" href="#modules.map_generator.create_map" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function for creating a folium map
+:param mountain_coords: string
+:param shop_coords: string
+:return:</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="modules.map_generator.get_mount_coords">
+<code class="descclassname">modules.map_generator.</code><code class="descname">get_mount_coords</code><span class="sig-paren">(</span><em>asc_id</em>, <em>db_path</em><span class="sig-paren">)</span><a class="headerlink" href="#modules.map_generator.get_mount_coords" title="Permalink to this definition">¶</a></dt>
+<dd><p>function for getting the latitude and longitude of the climbing route
+by making a request to database
+:param asc_id: int - identification of the ascent
+:param db_path: str - relative path to database
+:return:</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="modules.map_generator.get_shop_coords">
+<code class="descclassname">modules.map_generator.</code><code class="descname">get_shop_coords</code><span class="sig-paren">(</span><em>mountain_coords</em>, <em>client_id</em>, <em>client_secret</em><span class="sig-paren">)</span><a class="headerlink" href="#modules.map_generator.get_shop_coords" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-modules.process_data">
+<span id="modules-process-data-module"></span><h2>modules.process_data module<a class="headerlink" href="#module-modules.process_data" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="modules.process_data.create_map">
+<code class="descclassname">modules.process_data.</code><code class="descname">create_map</code><span class="sig-paren">(</span><em>mountain_coords</em>, <em>shop_coords</em><span class="sig-paren">)</span><a class="headerlink" href="#modules.process_data.create_map" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function for creating folium map
+:param mountain_coords: string
+:param shop_coords: string
+:return: None</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="modules.process_data.get_mount_coords">
+<code class="descclassname">modules.process_data.</code><code class="descname">get_mount_coords</code><span class="sig-paren">(</span><em>asc_id</em><span class="sig-paren">)</span><a class="headerlink" href="#modules.process_data.get_mount_coords" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="modules.process_data.get_shop_coords">
+<code class="descclassname">modules.process_data.</code><code class="descname">get_shop_coords</code><span class="sig-paren">(</span><em>mountain_coords</em><span class="sig-paren">)</span><a class="headerlink" href="#modules.process_data.get_shop_coords" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-modules">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-modules" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">route-helper</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2019, 8bit-number.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.8.5</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.8</a>
+      
+      |
+      <a href="../_sources/rst/modules.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

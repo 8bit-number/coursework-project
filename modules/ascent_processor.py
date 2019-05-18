@@ -15,7 +15,6 @@ class Ascent:
             self._category = category
         self.sign = sign
         self.category = category
-
         self.coords = coords
         self.my_id = my_id
 
@@ -25,7 +24,6 @@ class Ascent:
 
     @category.setter
     def category(self, category):
-
         if self.sign == 'gb1':
             self._category = "Beginner"
         elif self.sign == "gb2":
@@ -42,13 +40,6 @@ class Ascent:
     def get_data(self):
         return self
 
-    # def __str__(self):
-    #     return f"country is {self.country} \n" \
-    #         f"full name is {self.location} \n" \
-    #         f"style is {self.style} \n" \
-    #         f"grade is {self.grade} \n" \
-    #         f"category is {self.category} \n" \
-    #         f"coord is {self.coords} \n"
-
     def __repr__(self):
         return f"({self.location}, {self.style}, {self.grade}, {self.category})"
+
