@@ -3,10 +3,6 @@
 Project that gives recommendations to people on choosing the place where to climb, based on their preferences.
 For more detailed information -> [Wiki](https://github.com/8bit-number/coursework-project/wiki).
 
-Example of use
-
-
-
 # Призначення та коротка характеристика програми
 Цей проект - результат виконання курсової роботи з Основ Програмування. Мета проекту - розроблення програми, 
 яка б давала рекомендації щодо підбору маршруту для лазіння,
@@ -27,6 +23,6 @@ Example of use
 - csv_to_db.py
 
 # Коротка інструкція по користуванню програмою
-http://8bit-number.serveo.net/
+Посилання на веб-сторінку реалізації проекту: http://8bit-number.serveo.net/
 
 # Опис тестових прикладів для первірки працездатності програми
