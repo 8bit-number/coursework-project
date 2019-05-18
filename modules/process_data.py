@@ -2,9 +2,10 @@ import json, requests
 import folium
 import sqlite3
 
+from modules.config import client_id, client_secret, path_to_db, path_to_map
 
 def get_mount_coords(asc_id):
-    with sqlite3.connect("myTable2.db") as conn:
+    with sqlite3.connect(path_to_db) as conn:
         cursor = conn.cursor()
         cursor.execute(
             "SELECT coordinates FROM locations WHERE id in (?)",
@@ -12,18 +13,12 @@ def get_mount_coords(asc_id):
         return cursor.fetchone()[0]
 
 
-def get_id_secret():
-    with open("api_keys.json") as jf:
-        data = json.load(jf)
-    return data
-
-
 def get_shop_coords(mountain_coords):
     url = 'https://api.foursquare.com/v2/venues/search'
 
     params = dict(
-        client_id=get_id_secret()["client_id"],
-        client_secret=get_id_secret()["client_secret"],
+        client_id=client_id,
+        client_secret=client_secret,
         v='20180420',
         ll=mountain_coords,
         intent='browse',

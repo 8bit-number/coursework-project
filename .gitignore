@@ -3,3 +3,5 @@ venv
 __pycache__
 *.csv
 .env
+config.py
+venv/

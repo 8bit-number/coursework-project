@@ -51,7 +51,7 @@ class DataBase:
         """
         with sqlite3.connect(self.db_name) as conn:
             cursor = conn.cursor()
-            with open("../data/ascents.csv") as f:
+            with open("../data/data.csv") as f:
                 reader = csv.reader(f)
                 i = 1
                 for row in reader:
@@ -80,6 +80,7 @@ class DataBase:
         """
 
         query = "SELECT * FROM locations where location in (?) and category NOT in (?)"
+
         rez = []
         with sqlite3.connect(self.db_name) as conn:
             cursor = conn.cursor()
@@ -121,12 +122,17 @@ class DataBase:
             countries = [i[0] for i in cursor.fetchall()]
         return countries
 
-#
 
-# d = DataBase(
-#     "../data/testing.db")
+d = DataBase("../data/routes.db")
 # print(d.get_all_countries())
-# selected = d.execute_selection_by_country("Austria")
+# d.create_table()
+# d.insert_to_table()
+
+# print(d.get_all_countries())
+# selected = d.execute_selection_by_country("Austria")[0]
+# selected_2 = d.execute_selection_by_country("France")[0]
+# print(selected.style)
+# print(selected_2.style)
 # for i in selected[0:2]:
 #     print(i.category)
 # d.create_table()

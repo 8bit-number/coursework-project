@@ -1,8 +1,9 @@
 from bs4 import BeautifulSoup
-import modules.exceptions
 import requests
 import re
 import csv
+
+from modules.exceptions import ParserException
 
 
 def page_increment(num):
@@ -10,51 +11,56 @@ def page_increment(num):
     return num
 
 
-def url_processor():
+def url_processor(page):
     """
-    makes requests to the certain url-address
-    :return:
+    Function for sending requests to certain url to get the web-page contents
+    # >>> print(type(url_processor(1)))
+    # <class 'bytes'>
+    :param page: int - number of page in query parameter
+    :return: bytes - web-page contents
     """
     address = "https://www.thecrag.com/climbing/world/routes"
-
-    i = 0
-    while 1:
-        query = {"page": page_increment(i)}
-        response = requests.get(address, params=query)
-        try:
-            main_parser(response.content)
-            i += 1
-        except exceptions.ParserException:
-            with open("log.txt", "a") as f:
-                f.write(response.url)
-            break
+    query = dict(sortby="popularity,desc", page=page)
+    response = requests.get(address, params=query)
+    return response.content
 
 
-def format_title(arg):
-    if arg:
-        splitted = arg["title"].split("›")[1:]
+def format_title(bs_obj):
+    """
+    Function for getting the ascent title and its path in the readable
+    representation
+    :param bs_obj: bs4 - the table, that contains only the needed html tags
+    :return: list
+    """
+    if bs_obj:
+        splitted = bs_obj["title"].split("›")[1:]
         for el in range(len(splitted)):
             splitted[el] = splitted[el].replace("\xa0", '')
             splitted[el] = splitted[el].strip()
-        return splitted, splitted + [arg.text]
+
+        return splitted + [bs_obj.text]
     else:
         return None
 
 
-def get_lat_lon(arg):
+def get_lat_lon(bs_obj):
     """
     Function for getting latitude and longitude of each ascent and mountain
-    :param secondary_url: Beautiful_soup object
-    :return:
+    :param bs_obj: Beautiful_soup object
+    :return: list - list of coords
+
     """
-    full_url = "https://www.thecrag.com" + arg["href"]
+    full_url = "https://www.thecrag.com" + bs_obj["href"]
     try:
         resp = requests.get(full_url)
         bs_obj = BeautifulSoup(resp.content, "lxml")
-        rez = bs_obj.find("dl", {"class": "areaInfo"},
-                          string=re.compile(
-                              '\nLat/Long.+')).text.strip()[10:]
-        return rez
+        rez = bs_obj.find("dl",
+                          {"class": "areaInfo"}).text.strip()
+        if "Lat/Long" not in rez:
+            return None
+        else:
+            splited = rez.split()[1:]
+            return ''.join(splited)
     except:
         print(full_url)
         return "Unknown coords"
@@ -98,16 +104,17 @@ def main_parser(html):
     table = soup.find_all('tr')
 
     if len(table) == 1:
-        raise modules.exceptions.ParserException(
+        raise ParserException(
             "The url contains an empty page.")
-
     for row in table:
-        arg = row.find("a", {"title": re.compile(".+")})
-        if format_title(arg):
-            write_to_file(format_title(row), get_ascent_type(row),
-                          get_ascent_difficulty(row)[0],
-                          get_ascent_difficulty(row)[1],
-                          get_lat_lon(row))
+        bs_obj = row.find("a", {"title": re.compile(".+")})
+        title = format_title(bs_obj)
+        if title:
+            ascent_type = get_ascent_type(row)
+            ascent_difficulty = get_ascent_difficulty(row)
+            long_lat = get_lat_lon(bs_obj)
+            write_to_file(title, ascent_type, ascent_difficulty[0],
+                          ascent_difficulty[1], long_lat)
 
 
 def write_to_file(title, style, difficulty, category, location):
@@ -120,10 +127,23 @@ def write_to_file(title, style, difficulty, category, location):
     :param location: str
     :return:
     """
-    with open("locations_v11_2.csv", "a") as csv_file:
+
+    with open("data.csv", "a") as csv_file:
         writer = csv.writer(csv_file, delimiter=',')
-        writer.writerow(
-            title + [style] + [difficulty] + [category] + [location])
+        if location:
+            writer.writerow(
+                title + [style] + [difficulty] + [category] + [
+                    location])
 
 
-url_processor()
+if __name__ == '__main__':
+    from_page = 1
+    to_page = 5900
+
+    for page in range(from_page, to_page + 1):
+        content = url_processor(page)
+        try:
+            rows = main_parser(content)
+        except ParserException:
+            with open("log.txt", "a") as f:
+                f.write(content.url)

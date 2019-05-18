@@ -15,9 +15,10 @@ class Ascent:
             self._category = category
         self.sign = sign
         self.category = category
-
         self.coords = coords
         self.my_id = my_id
+
+
 
     @property
     def category(self):
@@ -25,7 +26,6 @@ class Ascent:
 
     @category.setter
     def category(self, category):
-
         if self.sign == 'gb1':
             self._category = "Beginner"
         elif self.sign == "gb2":
