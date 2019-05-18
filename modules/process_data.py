@@ -4,6 +4,7 @@ import sqlite3
 
 from modules.config import client_id, client_secret, path_to_db, path_to_map
 
+
 def get_mount_coords(asc_id):
     with sqlite3.connect(path_to_db) as conn:
         cursor = conn.cursor()

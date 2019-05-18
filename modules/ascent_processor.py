@@ -18,8 +18,6 @@ class Ascent:
         self.coords = coords
         self.my_id = my_id
 
-
-
     @property
     def category(self):
         return self._category
@@ -52,3 +50,5 @@ class Ascent:
 
     def __repr__(self):
         return f"({self.location}, {self.style}, {self.grade}, {self.category})"
+
+# class Difficulty:

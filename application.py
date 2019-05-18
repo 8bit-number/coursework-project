@@ -4,8 +4,7 @@ from modules.csv_to_db import DataBase
 from modules.countries import locations
 from modules.map_generator import get_mount_coords, get_shop_coords, \
     create_map
-from modules.config import client_id, client_secret, path_to_db, \
-    path_to_map
+from modules.config import client_id, client_secret, path_to_db
 
 app = Flask(__name__, template_folder="templates",
             static_folder='static')
@@ -52,14 +51,13 @@ def location():
 def display_map(route_id):
     mountain_coordinates = get_mount_coords(route_id, path_to_db)
     shop_coordinates = get_shop_coords(
-        mountain_coordinates, client_id, client_secret)
+        mountain_coordinates[0], client_id, client_secret)
 
-    location_map = create_map(mountain_coordinates, shop_coordinates, path_to_map)
+    location_map = create_map(mountain_coordinates[0], shop_coordinates,
+                              mountain_coordinates[1])
 
     return render_template("map.html", location_map=location_map)
 
 
 if __name__ == '__main__':
     app.run(debug=True)
-
-# "/home/nastya/PycharmProjects/course_work/templates/map.html"

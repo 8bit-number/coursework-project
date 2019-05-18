@@ -7,3 +7,4 @@ class ParserException(Exception):
 class EmptyUrl(ParserException):
     """ Exception, raised if url is empty """
     pass
+
