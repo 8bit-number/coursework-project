@@ -40,15 +40,6 @@ class Ascent:
     def get_data(self):
         return self
 
-    # def __str__(self):
-    #     return f"country is {self.country} \n" \
-    #         f"full name is {self.location} \n" \
-    #         f"style is {self.style} \n" \
-    #         f"grade is {self.grade} \n" \
-    #         f"category is {self.category} \n" \
-    #         f"coord is {self.coords} \n"
-
     def __repr__(self):
         return f"({self.location}, {self.style}, {self.grade}, {self.category})"
 
-# class Difficulty:

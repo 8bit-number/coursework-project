@@ -17,11 +17,13 @@ DIFFICULTIES = (
 
 @app.route("/", methods=['GET'])
 def home():
+    """Home page route with the short information about the project"""
     return render_template('main.html')
 
 
 @app.route("/location", methods=['GET', 'POST'])
 def location():
+    """Route, where user chooses country and their skill-level """
     countries = locations(path_to_db)
 
     kwargs = dict(
@@ -49,11 +51,14 @@ def location():
 
 @app.route('/location/<int:route_id>')
 def display_map(route_id):
+    """Route, that renders a folium map with markers,
+    that correspond to the shops and mountain itself, respectively"""
     mountain_coordinates = get_mount_coords(route_id, path_to_db)
     shop_coordinates = get_shop_coords(
         mountain_coordinates[0], client_id, client_secret)
 
-    location_map = create_map(mountain_coordinates[0], shop_coordinates,
+    location_map = create_map(mountain_coordinates[0],
+                              shop_coordinates,
                               mountain_coordinates[1])
 
     return render_template("map.html", location_map=location_map)

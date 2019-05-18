@@ -123,7 +123,7 @@ class DataBase:
         return countries
 
 
-d = DataBase("../data/routes.db")
+# d = DataBase("../data/routes.db")
 # print(d.get_all_countries())
 # d.create_table()
 # d.insert_to_table()
